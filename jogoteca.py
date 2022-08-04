@@ -44,6 +44,9 @@ def novo():
         return redirect(url_for('login', proxima=url_for('novo')))
     return render_template('novo.html', titulo='Novo Jogo')
 
+@app.route('/ai')
+def ai():
+    return render_template('ai.html', titulo='Executar AI')
 
 @app.route('/criar', methods=['POST', ])
 def criar():
@@ -54,6 +57,19 @@ def criar():
     lista.append(jogo)
     return redirect(url_for('index'))
 
+@app.route('/executar-ai', methods=['POST', ])
+def executarAi():
+    hiperparametro1 = request.form['hiperparametro1']
+    hiperparametro2 = request.form['hiperparametro2']
+
+    return redirect(url_for('resultadoAi', hiperparametro1=hiperparametro1, hiperparametro2=hiperparametro2))
+
+@app.route('/resultado-ai')
+def resultadoAi():
+    hp1 = request.args.get('hiperparametro1')
+    hp2 = request.args.get('hiperparametro1')
+    resultado='Funcionou!';
+    return render_template('resultado-ai.html', hiperparametro1=hp1, hiperparametro2=hp2, resultado=resultado)
 
 @app.route('/login')
 def login():
@@ -82,4 +98,4 @@ def logout():
     return redirect(url_for('index'))
 
 
-app.run(debug=True)
+app.run(debug=True, host="0.0.0.0")

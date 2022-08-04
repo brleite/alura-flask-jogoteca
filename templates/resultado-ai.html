@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <h2>Olha aí, José!</h2>
+        <table class="table table-striped table-responsive table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Hiperparâmetro 1</th>
+                    <th>Hiperparâmetro 2</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ hiperparametro1 }}</td>
+                    <td>{{ hiperparametro2 }}</td>
+                    <td>{{ resultado }}</td>
+                </tr>
+            </tbody>
+        </table>
+{% endblock %}
